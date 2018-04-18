@@ -1,6 +1,7 @@
-import Event from './utils/event';
-import $ from './utils/dom';
-import { actions as execActions, states as execStates } from './utils/exec';
+import Event from './event';
+import $ from './dom';
+import { actions as execActions, states as execStates } from './command';
+import defaultConfig from './config';
 
 const env = process.env.NODE_ENV;
 
@@ -10,12 +11,8 @@ export default class Editor extends Event {
     if (!(selector instanceof Element)) {
       throw new Error('please give a valid Element when create Editor');
     }
-    this.$config = Object({}, this._defaultConfig(), config);
+    this.$config = Object({}, defaultConfig, config);
     this._initialize(selector);
-  }
-
-  _defaultConfig() {
-    return {};
   }
 
   _initialize(selector) {
