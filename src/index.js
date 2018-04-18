@@ -2,6 +2,7 @@ import Event from './event';
 import $ from './dom';
 import { actions as execActions, states as execStates } from './command';
 import defaultConfig from './config';
+import SelectionAPI from './selection';
 
 const env = process.env.NODE_ENV;
 
@@ -17,6 +18,7 @@ export default class Editor extends Event {
 
   _initialize(selector) {
     this.$el = this._initDOM(selector);
+    this.$selection = new SelectionAPI(this);
   }
 
   _initDOM(selector) {

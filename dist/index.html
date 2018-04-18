@@ -6,6 +6,10 @@
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <title>zec</title>
   <style>
+    button {
+      cursor: pointer;
+    }
+
     #editor {
       width: 100%;
       height: 500px;
@@ -14,7 +18,26 @@
   </style>
 </head>
 <body>
-  <div id="editor"><p>测测测</p></div>
+  <div id="actions">
+    <button onclick="exec('bold')">bold</button>
+    <button onclick="exec('italic')">italic</button>
+    <button onclick="exec('underline')">underline</button>
+    <button onclick="exec('strike')">strike</button>
+    <button onclick="exec('heading', 1)">heading</button>
+    <button onclick="exec('paragraph')">paragraph</button>
+    <button onclick="exec('quote')">quote</button>
+    <button onclick="exec('ol')">ol</button>
+    <button onclick="exec('ul')">ul</button>
+    <button onclick="exec('code')">code</button>
+    <button onclick="exec('line')">line</button>
+    <button onclick="exec('link', 'https://calibur.tv')">link</button>
+    <button onclick="exec('image', 'https://static.calibur.tv/favicon.ico')">image</button>
+  </div>
+  <div id="editor">
+    <p>测测测</p>
+    <p>呵呵呵</p>
+    <p>哈哈哈</p>
+  </div>
 <script type="text/javascript" src="zec.js"></script></body>
 <script>
   const editor = new window.editor(document.getElementById('editor'))
@@ -24,5 +47,8 @@
   editor.onFocus((e) => {
     console.log(e);
   })
+  function exec(type, value) {
+    editor.exec(type, value)
+  }
 </script>
 </html>
