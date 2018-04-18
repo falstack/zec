@@ -6,9 +6,8 @@ import SelectionAPI from './selection';
 
 const env = process.env.NODE_ENV;
 
-export default class Editor extends Event {
+export default class Editor {
   constructor(selector, config = {}) {
-    super();
     if (!(selector instanceof Element)) {
       throw new Error('please give a valid Element when create Editor');
     }
@@ -19,6 +18,7 @@ export default class Editor extends Event {
   _initialize(selector) {
     this.$el = this._initDOM(selector);
     this.$selection = new SelectionAPI(this);
+    this.$event = new Event();
   }
 
   _initDOM(selector) {
@@ -39,11 +39,6 @@ export default class Editor extends Event {
   onFocus(handler) {
     // TODO return range
     return this.$el.addEventListener('focus', () => handler(execStates));
-  }
-
-  onSelect(handler) {
-    // TODO return selected string
-    console.log(handler);
   }
 
   exec(command, value = null) {

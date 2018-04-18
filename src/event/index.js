@@ -3,18 +3,18 @@ import mitt from 'mitt';
 
 export default class {
   constructor() {
-    this.__event__ = mitt();
+    this.evt = mitt();
   }
 
-  _on(event, handler) {
-    return this.__event__.on(event, handler);
+  on(event, handler) {
+    return this.evt.on(event, handler);
   }
 
-  _off(event, handler) {
-    return this.__event__.on(event, handler);
+  off(event, handler) {
+    return this.evt.on(event, handler);
   }
 
-  _emit(event, handler) {
-    return this.__event__.on(event, handler);
+  emit(event, handler) {
+    return this.evt.on(event, handler);
   }
 }
